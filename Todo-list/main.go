@@ -137,7 +137,7 @@ func fetchTodos(w http.ResponseWriter, r *http.Request){
 	})
 }
 
-func createTodo(w http.ReqestResponse, r* http.Request){
+func createTodo(w http.ResponseWriter, r* http.Request){
 	var t todo
 	if err:=json.NewDecoder(r.Body).Decode(&t); err!=nil{
 		rnd.JSON(w, http.StatusProcessing, err)
@@ -192,4 +192,44 @@ func deleteTodo(w httpResponseWriter,r * http.Request){
 	rnd.JSON(w,http.StatusOK,renderer.M{
 		"message":"Todo deleted successfully",
 	})
+}
+
+
+func updataTodo(w http.ResponseWriter,r*http.Request){
+	id:=strings.TrimSpace(chi.URLParam(r,"id"))
+
+	if !bson.IsObjectIdHex(id){
+		rnd.JSON(w,http.StatusBadRequest,renderer.M{
+			"message":"The id is invalid",
+		})
+		return
+	}
+
+	var t rodo
+
+	if err:=json.NewEncoder(r.Body).Decode(&t); err!=nil{
+		rnd.JSON(w,http.StatusProcessing,renderer.M{
+			"message":"Failed to decode request body",
+		})
+		return
+	}
+
+	if t.Title == "" {
+		rnd.JSON(w, http.StatusBadRequest, renderer.M{
+			"message": "Title cannot be empty",
+		})
+		return
+	}
+
+	if err:=db.C(collectionName).Update(
+		bson.M{"_id": bson.ObjectIdHex(id)},
+		bson.M{
+			"title":t.Title,
+			"completed":t.Completed,
+		},
+		); err!=nil{
+		rnd.JSON(w,http.StatusProcessing,renderer.M{
+			"message":"Failed to update todo",
+		})
+		return
 }
