@@ -119,10 +119,10 @@ func listTasks(status string) {
 		log.Println("No tasks found")
 		return
 	}
-	fmt.Println("TaskId	 | 	Description	  |  Status	 |   CreatedAt	|	UpdatedAt")
+	fmt.Printf("%-4s %-30s %-20s %-25s %-25s","TaskId","Description","Status","CreatedAt","UpdatedAt")
 	for _, task := range tasks {
 		if task.Status == status || status == " " {
-			fmt.Printf("%d	  |    %s  | %s 	 | %s	| 	%s", task.ID, task.Description, task.Status, task.CreatedAt, task.UpdatedAt)
+			fmt.Printf("%-4d %-30s %-20s %-25s %-25s", task.ID, task.Description, task.Status, task.CreatedAt, task.UpdatedAt)
 		}
 	}
 }
