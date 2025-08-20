@@ -10,4 +10,4 @@ https://roadmap.sh/projects/task-tracker
 
 -  Run the project:
     - Windows: ./Task_Tracker_CLI.exe <command>
-    - Mac: ./Task_Tracker_CLI <command> (if the file is not executable then run <chmod +x Task_Tracker_CLI> and try again)
+    - Mac: ./Task_Tracker_CLI <command> (if the file is not executable then run <chmod +x Task_Tracker_CLI> and try again) 
