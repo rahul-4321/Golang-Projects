@@ -6,7 +6,7 @@ import (
 )
 
 //Length
-func lengthHandler(w http.ResponseWriter, r*http.Request){
+func LengthHandler(w http.ResponseWriter, r*http.Request){
 	 var result string
 
 	if r.Method==http.MethodPost{

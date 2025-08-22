@@ -1,30 +1,29 @@
 package converter
 
-import(
-	"strconv"
+import (
 	"net/http"
+	"strconv"
 )
 
-
-func tempHandler(w http.ResponseWriter, r*http.Request){
+func TempHandler(w http.ResponseWriter, r *http.Request) {
 	var result string
 
-	if r.Method==http.MethodPost{
-		valuestr:=r.FormValue("value")
-		from:=r.FormValue("from")
-		to:=r.FormValue("to")
+	if r.Method == http.MethodPost {
+		valuestr := r.FormValue("value")
+		from := r.FormValue("from")
+		to := r.FormValue("to")
 
-		value,err:=strconv.ParseFloat(valuestr,64)
-		if err!=nil{
-			http.Error(w,"Invalid value",http.StatusBadRequest)
+		value, err := strconv.ParseFloat(valuestr, 64)
+		if err != nil {
+			http.Error(w, "Invalid value", http.StatusBadRequest)
 			return
 		}
-		result=convertTemperature(value,from,to)
+		result = convertTemperature(value, from, to)
 	}
-	templates.ExecuteTemplate(w,"temp.html",result)	
+	templates.ExecuteTemplate(w, "temp.html", result)
 }
 
-func convertTemperature(value float64, from string, to string) string{
+func convertTemperature(value float64, from string, to string) string {
 
 	var celcius float64
 	switch from {

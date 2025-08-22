@@ -6,7 +6,7 @@ import(
 )
 
 
-func weightHandler(w http.ResponseWriter, r*http.Request){
+func WeightHandler(w http.ResponseWriter, r*http.Request){
 	var result string
 
 	if r.Method==http.MethodPost{

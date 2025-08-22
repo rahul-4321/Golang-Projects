@@ -4,7 +4,8 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"https://github.com/rahul-4321/Golang-Projects/UnitConverter/converter"
+
+	"github.com/rahul-4321/Golang-Projects/UnitConverter/converter"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
@@ -14,10 +15,11 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	converter.InitTemplates(templates)
 	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/length", converter.lengthHandler)
-	http.HandleFunc("/weight", converter.weightHandler)
-	http.HandleFunc("/temp", converter.tempHandler)
+	http.HandleFunc("/length", converter.LengthHandler)
+	http.HandleFunc("/weight", converter.WeightHandler)
+	http.HandleFunc("/temp", converter.TempHandler)
 
 	log.Println("Server started at :8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
