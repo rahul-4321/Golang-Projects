@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Length Converter</title>
+</head>
+<body>
+<h2>Length Converter</h2>
+<form method="POST">
+    <label for="value">Value:</label>
+    <input type="text" id="value" name="value" required placeholder="Enter value">
+
+    <label for="from">From:</label>
+    <select id="from" name="from">
+        <option>millimeter</option><option>centimeter</option><option>meter</option>
+        <option>kilometer</option><option>inch</option><option>foot</option>
+        <option>yard</option><option>mile</option>
+    </select>
+
+    <label for="to">To:</label>
+    <select id="to" name="to">
+        <option>millimeter</option><option>centimeter</option><option>meter</option>
+        <option>kilometer</option><option>inch</option><option>foot</option>
+        <option>yard</option><option>mile</option>
+    </select>
+    <button type="submit">Convert</button>
+</form>
+{{if .}}<h3>Result: {{.}}</h3>{{end}}
+<a href="weight">Weight Converter</a> | <a href="temp">Temperature Converter</a>
+</body>
+</html>

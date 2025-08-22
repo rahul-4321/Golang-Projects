@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head><title>Weight Converter</title>
+</head>
+<body>
+<h2>Weight Converter</h2>
+<form method="POST">
+    Value: <input type="text" name="value" required title="Enter the value to convert" placeholder="Enter value">
+    <label for="from-select">From:</label>
+    <select name="from" id="from-select">
+        <option>milligram</option><option>gram</option><option>kilogram</option>
+        <option>ounce</option><option>pound</option>
+    </select>
+    <label for="to-select">To:</label>
+    <select name="to" id="to-select">
+        <option>milligram</option><option>gram</option><option>kilogram</option>
+        <option>ounce</option><option>pound</option>
+    </select>
+    <button type="submit">Convert</button>
+</form>
+{{if .}}<h3>Result: {{.}}</h3>{{end}}
+<a href="length">Length Converter</a> | <a href="temp">Temperature Converter</a>
+</body>
+</html>
